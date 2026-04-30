@@ -4,7 +4,9 @@ const CardPizza = ({ name, price, ingredients, img }) => {
       <img src={img} className="card-img-top" alt={name} />
 
       <div className="card-body text-center">
-        <h5 className="card-title">Pizza {name}</h5>
+        <h5 className="card-title text-capitalize">
+          Pizza {name}
+        </h5>
 
         <p className="text-muted">Ingredientes:</p>
 
