@@ -1,8 +1,29 @@
-import Header from '../components/Header'
-import CardPizza from '../components/CardPizza'
-import { pizzas } from '../pizzas' // 👈 IMPORTANTE
+import { useEffect, useState } from "react";
+import Header from "../components/Header";
+import CardPizza from "../components/CardPizza";
 
 const Home = () => {
+  const [pizzas, setPizzas] = useState([]);
+
+  // consumir API
+  const getPizzas = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/pizzas");
+
+      const data = await response.json();
+
+      setPizzas(data);
+
+    } catch (error) {
+      console.error("Error al obtener pizzas:", error);
+    }
+  };
+
+  // ejecutar al cargar
+  useEffect(() => {
+    getPizzas();
+  }, []);
+
   return (
     <div>
       <Header />
@@ -22,7 +43,7 @@ const Home = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
