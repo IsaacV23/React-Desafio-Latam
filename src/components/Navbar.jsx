@@ -1,28 +1,46 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
+
   const total = 25000;
   const token = false;
 
   return (
     <nav className="navbar navbar-dark bg-dark px-4 d-flex justify-content-between">
-      <div>
-        <button className="btn btn-outline-light me-2">🍕 Home</button>
+
+      <div className="d-flex gap-2">
+
+        <Link to="/" className="btn btn-outline-light">
+          🍕 Home
+        </Link>
 
         {token ? (
           <>
-            <button className="btn btn-outline-light me-2">🔓 Profile</button>
-            <button className="btn btn-outline-light">🔒 Logout</button>
+            <Link to="/profile" className="btn btn-outline-light">
+              🔓 Profile
+            </Link>
+
+            <button className="btn btn-outline-light">
+              🔒 Logout
+            </button>
           </>
         ) : (
           <>
-            <button className="btn btn-outline-light me-2">🔐 Login</button>
-            <button className="btn btn-outline-light">🔐 Register</button>
+            <Link to="/login" className="btn btn-outline-light">
+              🔐 Login
+            </Link>
+
+            <Link to="/register" className="btn btn-outline-light">
+              🔐 Register
+            </Link>
           </>
         )}
       </div>
 
-      <button className="btn btn-outline-info">
+      <Link to="/cart" className="btn btn-outline-info">
         🛒 Total: ${total.toLocaleString()}
-      </button>
+      </Link>
+
     </nav>
   );
 };
